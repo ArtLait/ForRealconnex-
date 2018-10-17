@@ -1,0 +1,14 @@
+
+.home-container {
+    background: #456;
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (min-width: 300px) {
+    .tasks-cont {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
