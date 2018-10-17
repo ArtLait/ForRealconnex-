@@ -11,32 +11,44 @@ class EditPage extends Component {
             title: '',
             text: ''
         };
-        this.title = React.createRef();
-        this.text = React.createRef();
         this.save = this.save.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-        this.id = this.props.match.params.id;
+        this.id = +this.props.match.params.id;
         let task = this.props.state.tasks[this.id];
-        this.title.value = task.title;
-        this.text.value = task.text;
+        this.setState({
+            title: task.title,
+            text: task.text
+        });
     }
 
-    save() {
+    handleChange(event) {
+        let target = event.target;
+        let name = target.name;
+        let value = target.value;
+        let state = this.state;
+        state[name] = value;
+        this.setState(state);
+    }
+
+    save(event) {
+        event.preventDefault();
         this.props.dispatch(saveData({
             id: this.id,
-            title: this.title.value,
-            task: this.text.value 
+            title: this.state.title,
+            text: this.state.text 
         }));
+        this.props.history.push('/');
     }
 
     render() {
-        return(<div className='edit-form'>
-            <input ref={(node) => { this.title = node }} placeholder="Enter the title"/>
-            <input ref={(node) => { this.text = node }} placeholder="Enter the text"/>
-            <button onClick={this.save}>Save</button>
-        </div>)
+        return(<form className='edit-form' onSubmit={this.save}>
+            <input name="title" value={this.state.title} onChange={this.handleChange} placeholder="Enter the title"/>
+            <input name="text"  value={this.state.text} onChange={this.handleChange} placeholder="Enter the text"/>
+            <input type="submit" value="Save" />
+        </form>)
     }
 }
 

@@ -18,3 +18,21 @@ export function saveData(item) {
         });
     }
 }
+
+export function newData(item) {
+    return dispatch => {
+        dispatch({
+            type: rootConstants.new,
+            res: item
+        });
+    }
+}
+
+export function deleteItem(id) {
+    return dispatch => {
+        dispatch({
+            type: rootConstants.delete,
+            res: id
+        });
+    }
+}

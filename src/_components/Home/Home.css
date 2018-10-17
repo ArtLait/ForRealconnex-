@@ -1,14 +1,17 @@
 
 .home-container {
-    background: #456;
+    background:  #282c34;
     width: 80%;
     margin: 0 auto;
+    padding: 20px;
 }
 
-@media (min-width: 300px) {
-    .tasks-cont {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+.tasks-cont {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home-container .add-task {
+    width: 150px; height: 40px;
 }

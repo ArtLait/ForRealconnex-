@@ -1,22 +1,22 @@
 export function createTasks() {
     let tasks = [
         {
-          id: 1,
+          id: 0,
           title: 'Title',
           text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
         },
         {
-          id: 2,
+          id: 1,
           title: 'Title2',
           text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
         },
         {
-          id: 3,
+          id: 2,
           title: 'Title3',
           text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
         },
         {
-          id: 4,
+          id: 3,
           title: 'Title4',
           text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
         }

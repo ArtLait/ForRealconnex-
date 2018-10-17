@@ -6,7 +6,7 @@ export function Task(props) {
     let {id, title, text} = props.task;
         return (<div className="task">
                 <div className="task-wrapper">
-                    <div className="id">Id: {id}</div>
+                    <div className="id">Id: {id + 1}</div>
                     <div className="task__info">
                         <Link to={'/edit/' + id} >
                             <div className="title">
@@ -14,6 +14,7 @@ export function Task(props) {
                             </div>
                         </Link>
                         <div className="text">{text}</div>
+                        <button onClick={(e)=>props.deleteTask(id)}>Delete</button>
                     </div>
                 </div>
             </div>

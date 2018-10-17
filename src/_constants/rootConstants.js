@@ -1,4 +1,6 @@
 export const rootConstants = {
     save: 'SAVE',
-    get: 'GET'
+    get: 'GET',
+    new: 'NEW',
+    delete: 'DELETE'
 }

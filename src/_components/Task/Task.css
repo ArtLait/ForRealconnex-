@@ -14,7 +14,12 @@
 }
 
 .task__info {
-    width: 80%;    
+    width: 80%;  
+    color: gray;  
+}
+
+.task__info a {
+    color: white;
 }
 
 .task-wrapper .text {

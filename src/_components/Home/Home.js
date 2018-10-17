@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './Home.css';
 
 import { Task } from '../Task/Task';
+import { deleteItem } from '../../_actions/data.actions';
 
 class Home extends Component {
   
@@ -11,7 +12,8 @@ class Home extends Component {
     super(props);
   }
 
-  componentDidMount() {
+  deleteTask(id) {
+      this.props.dispatch(deleteItem(id));
   }
 
   render() {
@@ -22,12 +24,12 @@ class Home extends Component {
                     this.props.state
                     &&
                     this.props.state.tasks.map((task, index) => 
-                        <Task key={index} task={task}/>
+                        <Task key={index} deleteTask={this.deleteTask.bind(this)} task={task}/>
                     )
                     
                 }
             </div>
-            <button><Link to='/addTask'>AddTask page</Link></button>
+            <button className="add-task"><Link to='/addTask'>AddTask page</Link></button>
           </div>
     );
   }
