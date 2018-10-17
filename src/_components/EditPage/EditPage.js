@@ -17,7 +17,14 @@ class EditPage extends Component {
 
     componentDidMount() {
         this.id = +this.props.match.params.id;
-        let task = this.props.state.tasks[this.id];
+        let task;
+        this.props.state.tasks.some((item, index) => {
+            if (item.id === this.id) {
+                task = item;
+                return true;
+            }
+        });
+
         this.setState({
             title: task.title,
             text: task.text

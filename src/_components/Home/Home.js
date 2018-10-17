@@ -12,8 +12,8 @@ class Home extends Component {
     super(props);
   }
 
-  deleteTask(id) {
-      this.props.dispatch(deleteItem(id));
+  deleteTask(task) {
+      this.props.dispatch(deleteItem(task));
   }
 
   render() {

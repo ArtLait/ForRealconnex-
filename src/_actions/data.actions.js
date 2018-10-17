@@ -8,7 +8,10 @@ export function getData() {
                 type: rootConstants.get,
                 res: createTasks()
             });
-        });
+        }, err => {
+                alert('error');
+            }
+        );
     }
 }
 
@@ -20,6 +23,8 @@ export function saveData(item) {
                 type: rootConstants.save,
                 res: item
             });
+        }, err => {
+            alert('error');
         });
     }
 }
@@ -32,18 +37,22 @@ export function newData(item) {
                 type: rootConstants.new,
                 res: item
             });
+        }, err => {
+            alert('error');
         });
     }
 }
 
-export function deleteItem(id) {
+export function deleteItem(task) {
     return dispatch => {
         createFakeServer().then(() => {
             alert('Deleted successfully!');
             dispatch({
                 type: rootConstants.delete,
-                res: id
+                res: task
             });
+        }, err => {
+            alert('error');
         });
     }
 }

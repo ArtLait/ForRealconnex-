@@ -8,7 +8,14 @@ export function rootReducer(state = {}, action) {
             }
 
         case rootConstants.save:
-            state.tasks[action.res.id] = action.res;
+            let index;
+            state.tasks.some((item, i) => {
+                if (item.id === action.res.id) {
+                    index = i;
+                    return true;
+                }
+            });
+            state.tasks[index] = action.res;
             return Object.assign({}, state);
 
         case rootConstants.new:
@@ -16,13 +23,9 @@ export function rootReducer(state = {}, action) {
             newTask.id = Math.floor(Math.random() * 1000);
             state.tasks.push(newTask);
             return Object.assign({}, state);
-            
+
         case rootConstants.delete:
-            state.tasks.forEach((item, index) => {
-               if (item.id == action.res) {
-                 state.tasks.splice(index, 1);
-               }     
-            });
+            state.tasks.splice(state.tasks.indexOf(action.res), 1);
             return Object.assign({}, state);
     }
 }
