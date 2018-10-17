@@ -42,12 +42,16 @@ class EditPage extends Component {
 
     save(event) {
         event.preventDefault();
-        this.props.dispatch(saveData({
-            id: this.id,
-            title: this.state.title,
-            text: this.state.text 
-        }));
-        this.props.history.push('/');
+        if (this.state.title && this.state.text) {
+            this.props.dispatch(saveData({
+                id: this.id,
+                title: this.state.title,
+                text: this.state.text 
+            })).then(() => this.props.history.push('/'));
+        }
+        else {
+            alert('Data is empty');
+        }
     }
 
     render() {
