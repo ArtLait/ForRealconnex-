@@ -17,7 +17,7 @@ class Home extends Component {
           <div className="home-container">  
             <div className="tasks-cont">
                 {
-                    this.props.state
+                    this.props.state 
                     &&
                     this.props.state.tasks.map((task, index) => 
                         <Task key={index} deleteTask={this.deleteTask.bind(this)} task={task}/>
