@@ -7,10 +7,6 @@ import { Task } from '../Task/Task';
 import { deleteItem } from '../../_actions/data.actions';
 
 class Home extends Component {
-  
-  constructor(props) {
-    super(props);
-  }
 
   deleteTask(task) {
       this.props.dispatch(deleteItem(task));

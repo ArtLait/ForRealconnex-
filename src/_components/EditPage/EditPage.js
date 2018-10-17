@@ -23,6 +23,7 @@ class EditPage extends Component {
                 task = item;
                 return true;
             }
+            return false;
         });
 
         this.setState({
