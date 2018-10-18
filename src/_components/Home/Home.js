@@ -9,7 +9,7 @@ import { deleteItem } from '../../_actions/data.actions';
 class Home extends Component {
 
   deleteTask(id) {
-      this.props.dispatch(deleteItem(id));
+      this.props.dispatch(deleteItem(id)).catch(err => alert(err));
   }
 
   render() {

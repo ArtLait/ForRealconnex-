@@ -8,10 +8,7 @@ export function getData() {
                 type: rootConstants.get,
                 res: createTasks()
             });
-        }, err => {
-                alert('error');
-            }
-        );
+        });
     }
 }
 
@@ -23,8 +20,6 @@ export function saveData(item) {
                 type: rootConstants.save,
                 res: item
             });
-        }, err => {
-            alert('error');
         });
     }
 }
@@ -37,8 +32,6 @@ export function newData(item) {
                 type: rootConstants.new,
                 res: item
             });
-        }, err => {
-            alert('error');
         });
     }
 }
@@ -51,14 +44,15 @@ export function deleteItem(task) {
                 type: rootConstants.delete,
                 res: task
             });
-        }, err => {
-            alert('error');
         });
     }
 }
 
 function createFakeServer() {
     return new Promise((resolve, reject) => {
-        setTimeout(resolve(), 1000)
+        if (Math.random() * 10 > 2)
+            setTimeout(resolve('sucess!'), 200)
+        else
+            setTimeout(reject('Server error.\nPlease try again later!'), 200)
     });
 }

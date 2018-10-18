@@ -48,7 +48,8 @@ class EditPage extends Component {
                 id: this.id,
                 title: this.state.title,
                 text: this.state.text 
-            })).then(() => this.props.history.push('/'));
+            })).then(() => this.props.history.push('/'),
+                err => alert('Error: ' +  err));
         }
         else {
             alert('Data is empty');
