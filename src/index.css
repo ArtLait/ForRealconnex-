@@ -12,3 +12,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.button-sm {
+  width: 250px;
+  height: 25px;
+  font-weight: bold;
+  color: #282c34;
+}
+
+.button {
+    width: 600px;
+    height: 40px;
+    font-weight: bold;
+    color: #282c34;
+}
+
+.button a {
+  color: #282c34;
+}

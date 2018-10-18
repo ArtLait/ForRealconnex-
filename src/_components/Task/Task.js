@@ -14,7 +14,7 @@ export function Task(props) {
                             </div>
                         </Link>
                         <div className="text">{text}</div>
-                        <button onClick={(e)=>props.deleteTask(props.task)}>Delete</button>
+                        <button className="button-sm" onClick={(e)=>props.deleteTask(props.index)}>Delete</button>
                     </div>
                 </div>
             </div>
