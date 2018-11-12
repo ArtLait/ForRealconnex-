@@ -26,7 +26,9 @@ export function rootReducer(state = {}, action) {
             return Object.assign({}, state);
 
         case rootConstants.delete:
-            state.tasks.splice(state.tasks.indexOf(action.res), 1);
+            state.tasks.splice(action.res, 1);
             return Object.assign({}, state);
+            default:
+        return state
     }
 }

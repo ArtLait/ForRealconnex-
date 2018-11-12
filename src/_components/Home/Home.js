@@ -8,6 +8,10 @@ import { deleteItem } from '../../_actions/data.actions';
 
 class Home extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   deleteTask(id) {
       this.props.dispatch(deleteItem(id)).catch(err => alert(err));
   }
@@ -17,7 +21,7 @@ class Home extends Component {
           <div className="home-container">  
             <div className="tasks-cont">
                 {
-                    this.props.state 
+                    this.props.state.tasks
                     &&
                     this.props.state.tasks.map((task, index) => 
                         <Task key={index} deleteTask={this.deleteTask.bind(this)} index={index} task={task}/>
@@ -32,7 +36,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    return {state};
+    return {state: state.rootReducer};
 }
 
 const connectedHome = connect(mapStateToProps)(Home);

@@ -3,6 +3,7 @@ import { createTasks } from '../_helpers/createTasks';
 
 export function getData() {
     return dispatch => {
+        console.log('getData');
         return createFakeServer().then(() => {
             dispatch({
                 type: rootConstants.get,

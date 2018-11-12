@@ -46,7 +46,7 @@ class AddTaskPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return {state};
+    return {state: state.rootReducer};
 }
 
 const connectedAddTaskPage = connect(mapStateToProps)(AddTaskPage);

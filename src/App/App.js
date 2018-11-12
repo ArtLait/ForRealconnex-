@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Router, Route } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Home } from '../_components/Home/Home';
 import { EditPage } from '../_components/EditPage/EditPage';
 import { AddTaskPage } from '../_components/AddTaskPage/AddTaskPage';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { getData } from '../_actions/data.actions';
-
-export const history = createBrowserHistory();
 
 class App extends Component {
 
@@ -33,8 +30,7 @@ class App extends Component {
 
   appContainer() {
     if (this.state.isNotEmptyData) {
-      return <Router history={history}>
-      <div>
+      return <div>
         <Link to='/'>
           <img src={logo} className="App-logo" alt="logo" />
         </Link>
@@ -43,7 +39,6 @@ class App extends Component {
         <Route path="/edit/:id" component={EditPage} />
         <Route path="/addTask" component={AddTaskPage} />
       </div>
-    </Router>
     }
     else {
       return <h1>{this.state.errorMessage}</h1>
@@ -62,8 +57,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return {state};
+  return {state: state.rootReducer};
 }
 
-const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App } ;
+const connectedApp = withRouter(connect(mapStateToProps)(App));
+export { connectedApp as App };

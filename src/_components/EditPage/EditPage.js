@@ -66,7 +66,7 @@ class EditPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return {state};
+    return {state: state.rootReducer};
 }
 
 const connectedEditPage = connect(mapStateToProps)(EditPage);
