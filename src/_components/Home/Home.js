@@ -5,15 +5,30 @@ import './Home.css';
 
 import { Task } from '../Task/Task';
 import { deleteItem } from '../../_actions/data.actions';
+import Modal from '../Modal/index.js';
+import Notification from '../Notification';
 
 class Home extends Component {
+  state = {
+      showNotification: false,
+      notificationText: 'Attention' 
+  }
 
   constructor(props) {
     super(props);
   }
 
   deleteTask(id) {
-      this.props.dispatch(deleteItem(id)).catch(err => alert(err));
+      this.props.dispatch(deleteItem(id)).then(
+          res => {
+              this.setState({
+                  showNotification: true,
+                  notificationText: 'Deleted successfully'
+                })},
+          err => this.setState({
+            showNotification: true,
+            notificationText: err
+          }));
   }
 
   render() {
@@ -29,7 +44,8 @@ class Home extends Component {
                     
                 }
             </div>
-            <button className="add-task button"><Link to='/addTask'>AddTask page</Link></button>
+            <button className="add-task button"><Link to='/addTask'>AddTask pagee</Link></button>
+            <Notification show={this.state.showNotification} text={this.state.notificationText} />
           </div>
     );
   }

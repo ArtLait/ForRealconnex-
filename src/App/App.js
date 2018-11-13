@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch(getData()).catch(err => {
       alert(err + '\nPlease, reload the page!');
-      this.setState({isNotEmptyData: false, errorMessage: err})
+      this.setState({isNotEmptyData: false, errorMessage: err});
     });
   }
 

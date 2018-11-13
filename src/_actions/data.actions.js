@@ -3,7 +3,6 @@ import { createTasks } from '../_helpers/createTasks';
 
 export function getData() {
     return dispatch => {
-        console.log('getData');
         return createFakeServer().then(() => {
             dispatch({
                 type: rootConstants.get,
@@ -16,7 +15,6 @@ export function getData() {
 export function saveData(item) {
     return dispatch => {
         return createFakeServer().then(() => {
-            alert('Changed successfully!');
             dispatch({
                 type: rootConstants.save,
                 res: item
@@ -28,7 +26,6 @@ export function saveData(item) {
 export function newData(item) {
     return dispatch => {
         return createFakeServer().then(() => {
-            alert('Added successfully!');
             dispatch({
                 type: rootConstants.new,
                 res: item
@@ -40,7 +37,6 @@ export function newData(item) {
 export function deleteItem(task) {
     return dispatch => {
         return createFakeServer().then(() => {
-            alert('Deleted successfully!');
             dispatch({
                 type: rootConstants.delete,
                 res: task
