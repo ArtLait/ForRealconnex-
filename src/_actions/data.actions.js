@@ -19,6 +19,7 @@ export function saveData(item) {
                 type: rootConstants.save,
                 res: item
             });
+            return 'Saved succesfully!'
         });
     }
 }
@@ -30,6 +31,7 @@ export function newData(item) {
                 type: rootConstants.new,
                 res: item
             });
+            return 'Added succesfully!'
         });
     }
 }
@@ -41,6 +43,7 @@ export function deleteItem(task) {
                 type: rootConstants.delete,
                 res: task
             });
+            return 'Delete Succesfully!'
         });
     }
 }

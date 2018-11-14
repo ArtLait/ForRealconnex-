@@ -5,8 +5,8 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Home } from '../_components/Home/Home';
-import { EditPage } from '../_components/EditPage/EditPage';
-import { AddTaskPage } from '../_components/AddTaskPage/AddTaskPage';
+import EditTask from '../_components/ModifyTask/EditTask';
+import AddTask from '../_components/ModifyTask/AddTask';
 import { Link, withRouter } from 'react-router-dom';
 
 import { getData } from '../_actions/data.actions';
@@ -36,8 +36,8 @@ class App extends Component {
         </Link>
         
         <Route exact path="/" component={Home} />
-        <Route path="/edit/:id" component={EditPage} />
-        <Route path="/addTask" component={AddTaskPage} />
+        <Route path="/edit/:id" component={EditTask} />
+        <Route path="/addTask" component={AddTask} />
       </div>
     }
     else {

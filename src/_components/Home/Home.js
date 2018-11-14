@@ -23,7 +23,7 @@ class Home extends Component {
           res => {
               this.setState({
                   showNotification: true,
-                  notificationText: 'Deleted successfully'
+                  notificationText: res
                 })},
           err => this.setState({
             showNotification: true,
