@@ -11,6 +11,16 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { getData } from '../_actions/data.actions';
 
+const mapStateToProps = (state) => {
+  return {state: state.rootReducer};
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    getData: () => {
+      return dispatch(getData())
+    }
+})
+
 class App extends Component {
 
   constructor(props) {
@@ -22,7 +32,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getData()).catch(err => {
+    this.props.getData().catch(err => {
       alert(err + '\nPlease, reload the page!');
       this.setState({isNotEmptyData: false, errorMessage: err});
     });
@@ -56,9 +66,5 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {state: state.rootReducer};
-}
-
-const connectedApp = withRouter(connect(mapStateToProps)(App));
+const connectedApp = withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 export { connectedApp as App };

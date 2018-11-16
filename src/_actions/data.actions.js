@@ -3,49 +3,57 @@ import { createTasks } from '../_helpers/createTasks';
 
 export function getData() {
     return dispatch => {
-        return createFakeServer().then(() => {
+        let payload = createFakeServer();
+        return payload.then(res => {
             dispatch({
                 type: rootConstants.get,
-                res: createTasks()
+                res: createTasks(),
+                payload
             });
-        });
+        })
     }
 }
 
 export function saveData(item) {
     return dispatch => {
-        return createFakeServer().then(() => {
-            dispatch({
+        let payload = createFakeServer();
+        return payload.then(res => {dispatch({
                 type: rootConstants.save,
-                res: item
-            });
-            return 'Saved succesfully!'
+                res: item,
+                payload
+            })
+            return 'Changed successfully!'
         });
     }
 }
 
 export function newData(item) {
     return dispatch => {
-        return createFakeServer().then(() => {
+        let payload = createFakeServer();
+        return payload.then(res => {
             dispatch({
                 type: rootConstants.new,
-                res: item
+                res: item,
+                payload
             });
-            return 'Added succesfully!'
-        });
+            return 'Added successfully!'
+        })
     }
 }
 
 export function deleteItem(task) {
     return dispatch => {
-        return createFakeServer().then(() => {
-            dispatch({
-                type: rootConstants.delete,
-                res: task
-            });
-            return 'Delete Succesfully!'
-        });
-    }
+            let payload = createFakeServer();
+            return payload.then(res => {
+                dispatch(
+                {
+                    type: rootConstants.delete,
+                    res: task,
+                    payload
+                })
+                return 'Deleted succesfully!'
+            })
+        }
 }
 
 function createFakeServer() {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Modal from '../Modal';
@@ -7,6 +7,16 @@ import Notification from '../Notification';
 import './form.css';
 
 export default function ModifyTask(action, init) {
+
+    const mapStateToProps = (state) => {
+        return {state: state.rootReducer};
+    }
+
+    const mapDispatchToProps = (dispatch) => (
+        {
+            action: (option) => (dispatch(action(option)))
+        }
+    )
 
     class Modify extends React.Component {
             constructor(props) {
@@ -22,7 +32,7 @@ export default function ModifyTask(action, init) {
                 this.showNotification = this.showNotification.bind(this);
             }
 
-            componentDidMount() {                
+            componentDidMount() {             
                 
                 if (init) {
                     init.call(this);
@@ -42,13 +52,13 @@ export default function ModifyTask(action, init) {
                 event.preventDefault();
                 if (this.state.title && this.state.text) {
                     
-                    this.props.dispatch(action(
+                    this.props.action(
                         {
                             id: this.id ? this.id : '',
                             title: this.state.title,
                             text: this.state.text 
                         }
-                    ))
+                    )
                     .then((res) => {
                                 this.showNotification(res);
                             },
@@ -84,10 +94,6 @@ export default function ModifyTask(action, init) {
             }
         }
 
-    function mapStateToProps(state) {
-        return {state: state.rootReducer};
-    }
-
-    const connectedModify = connect(mapStateToProps)(Modify);
+    const connectedModify = connect(mapStateToProps, mapDispatchToProps)(Modify);
     return connectedModify;
 }

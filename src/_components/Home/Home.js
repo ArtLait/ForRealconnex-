@@ -5,8 +5,11 @@ import './Home.css';
 
 import { Task } from '../Task/Task';
 import { deleteItem } from '../../_actions/data.actions';
-import Modal from '../Modal/index.js';
 import Notification from '../Notification';
+
+const mapStateToProps = (state) => ({
+    state: state.rootReducer
+})
 
 class Home extends Component {
   state = {
@@ -14,21 +17,19 @@ class Home extends Component {
       notificationText: 'Attention' 
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   deleteTask(id) {
       this.props.dispatch(deleteItem(id)).then(
           res => {
-              this.setState({
-                  showNotification: true,
-                  notificationText: res
-                })},
-          err => this.setState({
-            showNotification: true,
-            notificationText: err
-          }));
+            this.setState({
+                showNotification: true,
+                notificationText: res
+            })},
+          err => {
+            this.setState({
+                showNotification: true,
+                notificationText: err
+            })
+        });
   }
 
   render() {
@@ -49,10 +50,6 @@ class Home extends Component {
           </div>
     );
   }
-}
-
-function mapStateToProps(state) {
-    return {state: state.rootReducer};
 }
 
 const connectedHome = connect(mapStateToProps)(Home);

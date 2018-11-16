@@ -1,7 +1,7 @@
 import ModifyTask from './ModifyTask';
 import { saveData } from '../../_actions/data.actions';
 
-let componentDidMount2 = function() {
+let init = function() {
     this.id = +this.props.match.params.id;
     let task;
     if (!this.props.state.tasks) return
@@ -19,4 +19,4 @@ let componentDidMount2 = function() {
     });
 }
 
-export default ModifyTask(saveData, componentDidMount2);
+export default ModifyTask(saveData, init);
